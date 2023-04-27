@@ -24,6 +24,21 @@ Table inscriptions {
   id_cours integer
 }
 
+Table evaluations {
+  note float [primary key]
+  date timestamp
+  poids float
+}
+
+Table examens {
+  id_etudiant integer
+  id_note float
+  id_cours integer
+}
+
 Ref: inscriptions.id_etudiant > etudiants.matricule
 Ref: inscriptions.id_cours > cours.num_cours
 Ref: professeurs.email < cours.id_prof
+Ref: examens.id_etudiant > etudiants.matricule
+Ref: examens.id_cours > cours.num_cours
+Ref: examens.id_note > evaluations.note
