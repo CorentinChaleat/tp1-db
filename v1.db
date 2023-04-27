@@ -1,0 +1,29 @@
+Table etudiants {
+  matricule integer [primary key]
+  nom varchar
+  prenom varchar
+  email varchar
+  natel varchar
+}
+
+Table professeurs {
+  nom varchar
+  prenom varchar
+  email varchar [primary key]
+  bureau varchar
+}
+
+Table cours {
+  num_cours integer [primary key]
+  nom varchar
+  id_prof varchar
+}
+
+Table inscriptions {
+  id_etudiant integer
+  id_cours integer
+}
+
+Ref: inscriptions.id_etudiant > etudiants.matricule
+Ref: inscriptions.id_cours > cours.num_cours
+Ref: professeurs.email < cours.id_prof
