@@ -17,6 +17,8 @@ Table cours {
   num_cours integer [primary key]
   nom varchar
   id_prof varchar
+  id_assistant integer
+
 }
 
 Table inscriptions {
@@ -36,9 +38,18 @@ Table examens {
   id_cours integer
 }
 
+Table assistants {
+  bureau varchar
+  id_cours_assistant integer
+}
+
+
+
 Ref: inscriptions.id_etudiant > etudiants.matricule
 Ref: inscriptions.id_cours > cours.num_cours
 Ref: professeurs.email < cours.id_prof
 Ref: examens.id_etudiant > etudiants.matricule
 Ref: examens.id_cours > cours.num_cours
 Ref: examens.id_note > evaluations.note
+Ref: assistants.bureau > etudiants.matricule
+Ref: assistants.id_cours_assistant > cours.id_assistant
